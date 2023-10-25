@@ -22,6 +22,8 @@ Route::post('signup', 'API\AuthController@signup');
 
 Route::apiResource('movie', 'API\MovieController');
 Route::apiResource('director', 'API\DirectorController');
+Route::apiResource('actor', 'API\ActorController');
+
 
 /* 
     Rotas de autenticação.

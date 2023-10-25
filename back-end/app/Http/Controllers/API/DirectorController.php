@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\DirectorRequest;
+
 use App\Models\Director;
 
 
@@ -28,7 +30,7 @@ class DirectorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DirectorRequest $request)
     {
         $director = Director::create($request->all());
 

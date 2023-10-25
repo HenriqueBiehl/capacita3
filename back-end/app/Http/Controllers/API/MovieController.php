@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\MovieRequest;
+
 use App\Models\Movie;
 use App\Models\Director;
 
@@ -31,7 +33,7 @@ class MovieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MovieRequest $request)
     {
 
         if(!Director::find($request->director_id)){
@@ -135,6 +137,7 @@ class MovieController extends Controller
             Storage::delete($movie->movie_poster);
         }
 
+        $movie->actors()->detach();
         $movie->delete();
 
         return response()->json([
