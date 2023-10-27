@@ -55,7 +55,7 @@ class MovieController extends Controller
 
         return response()->json([
             'message' => 'Sucesso ao criar filme',
-            'data' => Movie::all()
+            'data' => $movie
         ], 200);
         
     }
@@ -83,7 +83,7 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MovieRequest $request, $id)
     {
         if(!Director::find($request->director_id)){
             return response()->json([
@@ -112,8 +112,8 @@ class MovieController extends Controller
         ]);
 
         return response()->json([
-            'message' => 'Sucesso ao atualizar documento',
-            'data' => $document
+            'message' => 'Sucesso ao atualizar filme',
+            'data' => $movie
         ], 201);
     }
 
