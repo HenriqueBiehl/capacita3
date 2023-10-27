@@ -61,7 +61,7 @@ class ActorController extends Controller
      */
     public function show($id)
     {
-        $actor = Actor::where('id', $id)->with('movies')->get();
+        $actor = Actor::find($id)->with('movies')->get();
         
         if(!$actor){
             return response()->json([

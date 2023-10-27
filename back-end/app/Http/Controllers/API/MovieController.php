@@ -21,7 +21,7 @@ class MovieController extends Controller
     public function index()
     {
         return response()->json([
-            'message' => 'Sucesso ao retornar diretores',
+            'message' => 'Sucesso ao retornar filmes',
             'data' => Movie::all()
         ], 200);
     }
