@@ -25,7 +25,7 @@ class MovieRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'movie_poster' => 'required|file|mimes:jpeg,jpg,bmp,png|max:2048',
+            'movie_poster' => 'file|mimes:jpeg,jpg,bmp,png|max:2048',
             'year' => 'required|integer|gt:0',
             'producer'=>'required|string|max:255',
             'run_time' => 'required|string|max:10',

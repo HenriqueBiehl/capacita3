@@ -42,6 +42,12 @@ class MovieController extends Controller
             ], 400);
         }
 
+        if(!$request->movie_poster){
+            return response()->json([
+                'message' => 'Campo movie poster é obrigatório'
+            ], 400);
+        }
+
         $file_path = $request->file('movie_poster')->store('public/posters');
 
         $movie = Movie::create([
