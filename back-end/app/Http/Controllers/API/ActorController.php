@@ -93,13 +93,17 @@ class ActorController extends Controller
             ], 404); 
         }
 
-        if($request->movie_id){
-            foreach($request->movie_id as $movie_id){
-                if(!Movie::find($movie_id)){
-                    return response()->json([
-                        'message' => 'Chave estrangeira de filme inválida',
-                    ], 404); 
-                }
+        if(!$request->movie_id){
+            return response()->json([
+                'message' => 'Chave estrangeira faltando',
+            ], 404); 
+        }
+
+        foreach($request->movie_id as $movie_id){
+            if(!Movie::find($movie_id)){
+                return response()->json([
+                    'message' => 'Chave estrangeira de filme inválida',
+                ], 404); 
             }
         }
 
