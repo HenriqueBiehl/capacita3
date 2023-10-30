@@ -67,7 +67,7 @@ class DirectorController extends Controller
     {
         $director = Director::find($id);
 
-        $plan->update($request->all());
+        $director->update($request->all());
 
         return response()->json([
             'message' => 'Sucesso ao atualizar diretor',
