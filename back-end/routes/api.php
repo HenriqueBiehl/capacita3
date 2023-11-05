@@ -20,17 +20,25 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', 'API\AuthController@login');
 Route::post('signup', 'API\AuthController@signup');
 
-Route::apiResource('movie', 'API\MovieController');
-Route::apiResource('director', 'API\DirectorController');
-Route::apiResource('actor', 'API\ActorController');
+Route::apiResource('movie', 'API\MovieController')->only(['show', 'index']);
+Route::apiResource('director', 'API\DirectorController')->only(['show', 'index']);
+Route::apiResource('actor', 'API\ActorController')->only(['show', 'index']);
 
 
 /* 
     Rotas de autenticação.
 */
 Route::middleware(['auth:api'])->group(function () {
+    
+    Route::apiResource('director', 'API\DirectorController')->except(['show', 'index']);
+    Route::apiResource('actor', 'API\ActorController')->except(['show', 'index']);
+
+    Route::middleware(['admin'])->group(function () {
+        Route::apiResource('movie', 'API\MovieController')->except(['show', 'index']);
+    });
 
     Route::get('logout', 'API\AuthController@logout');
     Route::get('user', 'API\AuthController@user');
 
 });
+

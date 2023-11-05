@@ -60,14 +60,14 @@ class ActorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        $actor = Actor::find($id)->with('movies')->get();
-        
-        if(!$actor){
+    {        
+        if(!Actor::find($id)){
             return response()->json([
                 'message' => 'Ator não encontrado',
             ], 404); 
         }
+
+        $actor = Actor::find($id)->with('movies')->get();
 
         return response()->json([
             'message' => 'Sucesso encontrar ator',

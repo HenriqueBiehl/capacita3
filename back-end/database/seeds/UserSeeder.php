@@ -15,5 +15,11 @@ class UserSeeder extends Seeder
             'email' => 'admin@ecomp.co',
             'password' => bcrypt('secret'),
         ]);
+
+        DB::table('users')->insert([
+            'email' => 'mathias@ecomp.co',
+            'password' => bcrypt('thePenguin'),
+            'isAdmin' => true
+        ]);
     }
 }

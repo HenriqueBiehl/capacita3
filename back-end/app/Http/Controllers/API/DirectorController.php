@@ -48,6 +48,12 @@ class DirectorController extends Controller
      */
     public function show($id)
     {
+        if(!Director::find($id)){
+            return response()->json([
+                'message' => 'Diretor não encontrado',
+            ], 404); 
+        }
+        
         $director = Director::find($id)->with('movies')->get();
 
         return response()->json([
